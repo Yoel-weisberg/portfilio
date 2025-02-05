@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import {
   ChevronLeft,
@@ -6,12 +7,15 @@ import {
   ChevronUp,
   ChevronDown,
 } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const SlideshowViewer = ({ slideshowData }) => {
+const SlideshowViewer = ({ slideshowData}) => {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [categoryScroll, setCategoryScroll] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [gridEnabled, setGridEnabled] = useState(true);
+  const router = useRouter();
 
   const handleNextSlide = () => {
     setCurrentSlide(
@@ -68,7 +72,7 @@ const SlideshowViewer = ({ slideshowData }) => {
         )}
 
         {/* Category List */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2  mt-2">
           {slideshowData
             .slice(categoryScroll, categoryScroll + 3)
             .map((category, index) => (
@@ -101,10 +105,12 @@ const SlideshowViewer = ({ slideshowData }) => {
       {/* Slide Image - Full Screen */}
       <div className="absolute inset-0 flex items-center justify-center px-[10%] py-[5%]">
         <div className="relative w-full h-full">
-          <img
+          <Image
             src={currentSlideData.src}
-            alt={currentSlideData.src}
-            className="w-full h-full object-cover rounded-[50px] border-[3px] border-white"
+            alt="Slide Image"
+            layout="fill"
+            objectFit="cover"
+            className="border-[3px] border-white"
           />
 
           {/* Rule of Thirds Grid Overlay */}
@@ -155,7 +161,7 @@ const SlideshowViewer = ({ slideshowData }) => {
       <div
         className="absolute top-4 right-4 z-20 cursor-pointer group"
         onClick={() => {
-          /* Navigate to next page */
+          router.push("/HomePage"); // Automatically go to Dashboard
         }}
       >
         <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center group-hover:bg-white/50 transition-all">
