@@ -59,6 +59,7 @@ const SlideshowViewer = ({ slideshowData}) => {
 
   return (
     <div className="relative w-screen h-screen bg-black overflow-hidden">
+      
       {/* Vertical Category Menu with Vertical Arrows */}
       <div className="absolute top-4 left-4 z-20 flex flex-col items-start">
         {/* Scroll Up Button */}

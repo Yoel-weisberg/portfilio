@@ -12,11 +12,11 @@ const NavigationBar = () => {
           <a href="/HomePage#about" className="hover:text-white transition">
             About me
           </a>
-          <a href="/Gallary" className="hover:text-white transition">
-            Gallery
+          <a href="/HomePage#Catalogs" className="hover:text-white transition">
+            Catelogs
           </a>
-          <a href="#" className="hover:text-white transition">
-            Order
+          <a href="/Gallary" className="hover:text-white transition">
+            Gallary
           </a>
           <a href="#" className="hover:text-white transition">
             Contact

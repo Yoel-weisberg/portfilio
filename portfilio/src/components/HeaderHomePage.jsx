@@ -3,31 +3,6 @@ import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 const HeaderHomePage = () => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      if (scrollY > 200) {  // Adjust the value for earlier or later animations
-        controls.start({
-          opacity: 0,
-          y: -100,
-          transition: { duration: 0.6, ease: "easeInOut" },
-        });
-      } else {
-        controls.start({
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.6, ease: "easeOut" },
-        });
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [controls]);
-
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       {/* Main Content */}
