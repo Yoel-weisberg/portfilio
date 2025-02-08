@@ -8,8 +8,7 @@ import CatalogsComp from "@/components/Catalogs";
 const GalleryPage = () => {
   const router = useRouter();
   return (
-    <div className="min-h-screen bg-black text-white p-8">
-      <NavigationBar />
+    <div className="min-h-screen  dark:text-white p-8">
       <CatalogsComp />
     </div>
   );

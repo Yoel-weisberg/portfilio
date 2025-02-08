@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 const HeaderHomePage = () => {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen  dark:text-white flex flex-col">
       {/* Main Content */}
       <div className="flex-grow flex flex-col mt-[10vh] items-center text-center px-4">
         <motion.div
@@ -22,7 +22,7 @@ const HeaderHomePage = () => {
             </span>
             <br />
             <span className="text-[36px] mb-2">a</span>
-            <span className="text-[128px] font-bold leading-tight bg-gradient-to-r from-[#FFFEFE] to-[#999] bg-clip-text text-transparent">
+            <span className="text-[128px] font-bold leading-tight bg-gradient-to-r dark:from-[#FFFEFE] dark:to-[#999] from-[#999] to-[#dbd8d8] bg-clip-text text-transparent">
               Photographer
             </span>
           </h1>

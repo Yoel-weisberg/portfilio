@@ -21,29 +21,6 @@ const catalogs = {
       width: 4,
       height: 3,
       tags: ["people"]
-    },
-    {  
-      src: '/Images/landscape4.jpg', 
-      thumbnail: '/Images/landscape4.jpg', 
-      settings: { shutterSpeed: '1/4', aperture: 'f 16' },
-      width: 4,
-      height: 3,
-      tags: ["landscape"]
-    },
-    {  
-      src: '/Images/landscape1.jpg', 
-      settings: { shutterSpeed: '1/4', aperture: 'f 16' },
-      tags: ["landscape", "macro", "food"]
-    },
-    {  
-      src: '/Images/landscape2.jpg', 
-      settings: { shutterSpeed: '1/4', aperture: 'f 16' },
-      tags: ["landscape", "macro", "food"]
-    },
-    {  
-      src: '/Images/landscape3.jpg', 
-      settings: { shutterSpeed: '1/4', aperture: 'f 16' },
-      tags: ["landscape", "macro", "food"]
     }
   ]
 }

@@ -1,9 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ToggleDemo } from "@/components/DarkModeToggle";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+import Header from "@/components/Header";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -20,10 +22,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-black bg-white`}
       >
         {/* Navigation */}
-
+        <Header />
         {children}
       </body>
     </html>

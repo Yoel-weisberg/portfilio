@@ -12,7 +12,7 @@ const CatalogsComp = () => {
   return (
     <div
       id="Catalogs"
-      className="relative flex flex-col h-screen text-white px-8 md:px-20 lg:px-32 z-10 gap-10 pt-12 pb-12"
+      className="relative flex flex-col h-screen dark:text-white px-8 md:px-20 lg:px-32 z-10 gap-10 pt-12 pb-12"
     >
       <motion.div
         className="max-w-7xl"
@@ -24,17 +24,17 @@ const CatalogsComp = () => {
       </motion.div>
 
       <motion.div
-        className="max-w-7xl mx-auto my-auto"
+        className="my-auto"
         initial={{ opacity: 0, y: 100 }} // Starts invisible and lower
         whileInView={{ opacity: 1, y: 0 }} // Animates to normal position
         transition={{ duration: 1, ease: "easeOut" }} // Smooth animation
       > 
       <ScrollArea className="w-11/12 whitespace-nowrap rounded-md mx-auto">
-        <div className="flex w-max space-x-4 p-4 mb-4">
+        <div className="flex w-max space-x-8 p-4 mb-4">
           {catalogs.tags.map((tag) => (
             <figure
               key={tag.name}
-              className="shrink-0 relative cursor-pointer"
+              className="shrink-0 relative cursor-pointer transition-transform duration-500 hover:scale-105"
               onClick={() => router.push(`Catalogs/${tag.name}`)}
             >
               <div className="overflow-hidden rounded-md relative">
@@ -44,9 +44,9 @@ const CatalogsComp = () => {
                 <Image
                   src={tag.thumbnail}
                   alt={tag.name}
-                  className="aspect-[3/4] h-fit w-fit object-cover"
-                  width={300}
-                  height={400}
+                  className=" h-fit w-fit object-cover"
+                  width={400}
+                  height={300}
                 />
               </div>
             </figure>

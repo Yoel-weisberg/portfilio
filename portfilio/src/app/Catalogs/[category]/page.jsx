@@ -20,9 +20,7 @@ const CatalogDisplay = ({ params }) => {
 
   if (catalog_images.length === 0) return <div>No images in catalog</div>;
   return (
-    <div className="min-h-screen bg-black text-white p-8">
-      {/* Navigation */}
-      <NavigationBar />
+    <div className="min-h-screen  dark:text-white p-8">
       {/* Catalog Title and Description */}
       <div className="max-w-7xl mx-auto mb-12">
         <h1 className="text-6xl font-bold mb-4 capitalize">{catalog_object.name}</h1>

@@ -21,14 +21,16 @@ function renderNextImage({ alt = "", title, sizes }, { photo, width, height }) {
       }}
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
+      className="relative overflow-hidden rounded-lg"
     >
       <Image
         fill
-        src={photo}
-        alt={alt}
-        title={title}
-        sizes={sizes}
-        placeholder={"blurDataURL" in photo ? "blur" : undefined}
+        src={photo.src}
+        alt="alt"
+        title={photo.title}
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        className="object-cover"
+        quality={90}
       />
     </motion.div>
   );
@@ -36,7 +38,7 @@ function renderNextImage({ alt = "", title, sizes }, { photo, width, height }) {
 
 const PhotoGrid = ({ images }) => {
     const [index, setIndex] = React.useState(-1);
-    
+    console.log(images)
   return (
     <div>
       <motion.div

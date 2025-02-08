@@ -6,9 +6,9 @@ const ScrollDownIndicator = ({scrollTo}) => {
   return (
     <a className="flex justify-center" href={scrollTo}>
       <motion.div 
-        className="w-20 h-36 border-4 border-white rounded-full flex justify-center items-center"
+        className="w-20 h-36 border-4 dark:border-white border-black rounded-full flex justify-center items-center"
         style={{ 
-          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 2px 10px dark:rgba(0, 0, 0, 0.1)',
         }}
       >
         <motion.svg 
@@ -29,7 +29,7 @@ const ScrollDownIndicator = ({scrollTo}) => {
               ease: "easeInOut"
             }
           }}
-          className="text-white"
+          className="dark:text-white"
         >
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </motion.svg>

@@ -5,13 +5,14 @@ import NavigationBar from "@/components/NavigationBar";
 import HeaderHomePage from "@/components/HeaderHomePage";
 import AboutMe from "@/components/AboutMe";
 import CatalogsComp from "@/components/Catalogs";
+import ContactSection from "@/components/Contact";
 const HomePage = ({ selectedImage }) => {
   return (
-    <div className="bg-black">
-      <NavigationBar/>
+    <div>
       <HeaderHomePage />
       <AboutMe />
       <CatalogsComp />
+      <ContactSection />
     </div>
   );
 };

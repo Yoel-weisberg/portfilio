@@ -1,29 +1,26 @@
-"use-cliant";
-import { usePathname } from "next/navigation"; // Import usePathname
+"use client";
 
+import * as React from "react";
+import { usePathname } from "next/navigation";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+
+import NavigationBarItem from "./NavigationBarItem";
 const NavigationBar = () => {
+  const pathname = usePathname();
+
   return (
-    <div className="w-full sticky top-0 shadow-md z-10">
-      <nav className="flex justify-center pt-6">
-        <div className="space-x-6 text-gray-300">
-          <a href="/HomePage" className="hover:text-white transition">
-            Main
-          </a>
-          <a href="/HomePage#about" className="hover:text-white transition">
-            About me
-          </a>
-          <a href="/HomePage#Catalogs" className="hover:text-white transition">
-            Catelogs
-          </a>
-          <a href="/Gallary" className="hover:text-white transition">
-            Gallary
-          </a>
-          <a href="#" className="hover:text-white transition">
-            Contact
-          </a>
-        </div>
-      </nav>
-    </div>
+    <NavigationMenu className=" mx-10 justify-center py-2">
+      <NavigationMenuList className="space-x-2">
+        <NavigationBarItem Text={"Main"} href={"/"} />
+        <NavigationBarItem Text={"About me"} href={"/HomePage#about"} />
+        <NavigationBarItem Text={"Catalogs"} href={"/HomePage#Catalogs"} />
+        <NavigationBarItem Text={"Gallery"} href={"/Gallary"} />
+        <NavigationBarItem Text={"Contact"} href={"/HomePage#Contact"} />
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 
