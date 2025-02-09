@@ -3,11 +3,15 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import catalogs from "@/app/testData";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useData } from "@/app/context/DataContext";
 
 const CatalogsComp = () => {
+  const { images, tags, loading } = useData();
+
+  if (loading) return <p>Loading...</p>;
+
   const router = useRouter();
   return (
     <div
@@ -31,7 +35,7 @@ const CatalogsComp = () => {
       > 
       <ScrollArea className="w-11/12 whitespace-nowrap rounded-md mx-auto">
         <div className="flex w-max space-x-8 p-4 mb-4">
-          {catalogs.tags.map((tag) => (
+          {tags.map((tag) => (
             <figure
               key={tag.name}
               className="shrink-0 relative cursor-pointer transition-transform duration-500 hover:scale-105"

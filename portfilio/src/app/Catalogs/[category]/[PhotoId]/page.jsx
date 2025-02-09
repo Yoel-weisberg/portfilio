@@ -4,10 +4,14 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { ExpandIcon } from 'lucide-react';
 import { usePathname } from "next/navigation";
-import catalogs from '@/app/testData';
 import { use } from "react";
+import { useData } from "../context/DataContext";
 
 const ImageDetailPage= ({ params }) => {
+  const { images, tags, loading } = useData();
+
+  if (loading) return <p>Loading...</p>;
+
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const pathname = usePathname();
   const params_v = use(params)
@@ -15,7 +19,7 @@ const ImageDetailPage= ({ params }) => {
   // Find the catalog based on the first path segment
   const catalogName = params_v.category;
   const imageId = params_v.PhotoId;
-  const catalogData = catalogs.find(catalog => catalog.name === catalogName);
+  const catalogData = tags.find(catalog => catalog.name === catalogName);
 
   if (!catalogData) {
     throw new Error(`Catalog "${catalogName}" not found.`);

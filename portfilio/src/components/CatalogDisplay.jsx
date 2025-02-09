@@ -4,12 +4,15 @@ import React from 'react';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import NavigationBar from './NavigationBar';
+import { useData } from "../context/DataContext";
 
-import catalogs from '@/app/testData';
 const CatalogDisplay = ({ categoryName }) => {
   // This should be replaced with your actual data access
-  
-  const catalog = catalogs.find(catalog => catalog.name.toLowerCase() === categoryName);
+  const { images, tags, loading } = useData();
+
+  if (loading) return <p>Loading...</p>;
+
+  const catalog = tags.find(catalog => catalog.name.toLowerCase() === categoryName);
   if (!catalog) return <div>Catalog not found</div>;
 
   return (

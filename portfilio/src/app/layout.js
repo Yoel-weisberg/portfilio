@@ -1,12 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ToggleDemo } from "@/components/DarkModeToggle";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import Header from "@/components/Header";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-import Header from "@/components/Header";
-
+import { DataProvider } from "./context/DataContext";
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -20,14 +20,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-black bg-white`}
-      >
-        {/* Navigation */}
-        <Header />
-        {children}
-      </body>
+      <DataProvider>
+        <UserProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-black bg-white`}
+          >
+            {/* Navigation */}
+            <Header />
+            {children}
+          </body>
+        </UserProvider>
+      </DataProvider>
     </html>
   );
 }
