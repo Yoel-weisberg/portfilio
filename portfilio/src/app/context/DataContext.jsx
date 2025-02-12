@@ -21,7 +21,6 @@ export const DataProvider = ({ children }) => {
           throw new Error('Failed to fetch data');
         }
 
-        console.log(imagesRes, tagsRes);
 
         const imagesData = await imagesRes.json();
         const tagsData = await tagsRes.json();

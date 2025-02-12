@@ -9,6 +9,8 @@ async function main() {
       src: "/Images/landscape1.jpg",
       thumbnail: "/Images/landscape1.jpg",
       alt: "A beautiful nature scene",
+      width: 800,
+      height: 600
     },
   });
 
@@ -17,6 +19,8 @@ async function main() {
       src: "/Images/people1.jpg",
       thumbnail: "/Images/people1.jpg",
       alt: "A busy urban scene",
+      width: 800,
+      height: 600
     },
   });
 
@@ -60,7 +64,6 @@ async function main() {
     },
   });
 
-  console.log("Database seeded");
 }
 
 main()

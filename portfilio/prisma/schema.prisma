@@ -17,6 +17,8 @@ model Image {
   alt       String
   src       String
   thumbnail String
+  width     Int?
+  height Int?
   tags      Tag[]
 }
 
@@ -24,7 +26,6 @@ model Tag {
   id          Int     @id @default(autoincrement())
   name        String
   description String
-  thumbnail   Int     @unique
 
   // Many-to-Many Relationship with Image
   images      Image[]

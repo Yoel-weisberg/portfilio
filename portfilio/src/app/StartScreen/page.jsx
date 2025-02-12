@@ -109,7 +109,7 @@ const SlideshowViewer = ({ slideshowData}) => {
           <Image
             src={currentSlideData.src}
             alt="Slide Image"
-            layout="fill"
+            fill
             objectFit="cover"
             className="border-[3px] border-white"
           />

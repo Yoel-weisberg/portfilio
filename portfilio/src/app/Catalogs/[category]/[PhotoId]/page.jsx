@@ -15,7 +15,6 @@ const ImageDetailPage= ({ params }) => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const pathname = usePathname();
   const params_v = use(params)
-  console.log(params_v);
   // Find the catalog based on the first path segment
   const catalogName = params_v.category;
   const imageId = params_v.PhotoId;

@@ -46,7 +46,6 @@ const CatalogDisplay = ({ categoryName }) => {
           <Card 
             key={image.id || index}
             className="relative overflow-hidden rounded-lg border-2 border-white cursor-pointer"
-            onClick={() => console.log(`Clicked image ${image.id || index}`)}
           >
             <CardContent className="p-0">
               <div className="relative">

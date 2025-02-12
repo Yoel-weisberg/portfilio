@@ -1,106 +1,78 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { PhotoUploadSection } from '@/components/PhotoUploadSection';
-import { TagManagementSection } from '@/components/TagManagementSection';
-import { PhotoAlbumSection } from '@/components/PhotoAlbumSection';
-import { toast } from '@/hooks/use-toast';
+import React, { useState, useEffect } from "react";
+import { PhotoUploadSection } from "@/components/PhotoUploadSection";
+import { TagManagementSection } from "@/components/TagManagementSection";
+import { PhotoAlbumSection } from "@/components/PhotoAlbumSection";
+import { useToast } from "@/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast";
+import { useData } from "@/app/context/DataContext";
 
 const AdminDashboard = () => {
-  const [photos, setPhotos] = useState([]);
-  const [tags, setTags] = useState([]);
+  const { images, tags, loading } = useData();
+  const { toast } = useToast();
   const [selectedPhotos, setSelectedPhotos] = useState(new Set());
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Fetch initial data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [photosRes, tagsRes] = await Promise.all([
-          fetch('/api/images'),
-          fetch('/api/tags')
-        ]);
-
-
-        const photosData = await photosRes.json();
-        const tagsData = await tagsRes.json();
-
-        setPhotos(photosData);
-        setTags(tagsData);
-      } catch (error) {
-        toast({
-          title: 'Error',
-          description: 'Failed to load dashboard data',
-          variant: 'destructive'
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handlePhotoUpload = async (uploadData) => {
     try {
       const formData = new FormData();
-      uploadData.files.forEach(file => {
-        formData.append('files', file);
+      uploadData.files.forEach((file) => {
+        formData.append("files", file);
       });
-      formData.append('alt', uploadData.alt);
-      formData.append('tags', JSON.stringify(uploadData.tags));
+      formData.append("alt", uploadData.alt);
+      formData.append("tags", JSON.stringify(uploadData.tags));
 
-      const response = await fetch('/api/admin/images', {
-        method: 'POST',
-        body: formData
+      const response = await fetch("/api/admin/images", {
+        method: "POST",
+        body: formData,
       });
 
       if (!response.ok) {
-        throw new Error('Failed to upload photos');
+        throw new Error("Failed to upload images");
       }
 
       const newPhotos = await response.json();
-      setPhotos(prev => [...prev, ...newPhotos]);
-      
+      setPhotos((prev) => [...prev, ...newPhotos]);
+
       toast({
-        title: 'Success',
-        description: 'Photos uploaded successfully'
+        title: "Success",
+        description: "images uploaded successfully",
       });
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Failed to upload photos',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to upload images",
+        variant: "destructive",
       });
     }
   };
 
   const handleTagCreate = async (tagData) => {
     try {
-      const response = await fetch('/api/admin/tags', {
-        method: 'POST',
+      const response = await fetch("/api/admin/tags", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(tagData)
+        body: JSON.stringify(tagData),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to create tag');
+        throw new Error("Failed to create tag");
       }
 
       const newTag = await response.json();
-      setTags(prev => [...prev, newTag]);
-      
+      setTags((prev) => [...prev, newTag]);
+
       toast({
-        title: 'Success',
-        description: 'Tag created successfully'
+        title: "Success",
+        description: "Tag created successfully",
       });
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Failed to create tag',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to create tag",
+        variant: "destructive",
       });
     }
   };
@@ -108,30 +80,30 @@ const AdminDashboard = () => {
   const handleTagUpdate = async (oldName, tagData) => {
     try {
       const response = await fetch(`/api/admin/tags/${oldName}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(tagData)
+        body: JSON.stringify(tagData),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to update tag');
+        throw new Error("Failed to update tag");
       }
 
-      setTags(prev => prev.map(tag => 
-        tag.name === oldName ? { ...tag, ...tagData } : tag
-      ));
-      
+      setTags((prev) =>
+        prev.map((tag) => (tag.name === oldName ? { ...tag, ...tagData } : tag))
+      );
+
       toast({
-        title: 'Success',
-        description: 'Tag updated successfully'
+        title: "Success",
+        description: "Tag updated successfully",
       });
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Failed to update tag',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to update tag",
+        variant: "destructive",
       });
     }
   };
@@ -147,66 +119,70 @@ const AdminDashboard = () => {
   };
 
   const handleApplyTags = async (tagsToApply) => {
-    try {
-      const updatePromises = Array.from(selectedPhotos).map(photoId =>
-        fetch(`/api/admin/images/${photoId}/tags`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ tags: tagsToApply })
+    const newTags = tagsToApply
+      .map((name) => tags.find((tag) => tag.name === name)?.id)
+      .filter((id) => id !== undefined); // Remove undefined values if a name doesn't exist
+    console.log("applyTags", newTags);
+    const updatePromises = Array.from(selectedPhotos).map((photoId) =>
+      fetch(`/api/admin/images/${photoId}/tags`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tags: newTags }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            console.log(response.body.error);
+            return Promise.reject(
+              "Failed to apply tags for photo ID: " + photoId
+            );
+          }
+          return response.json(); // Assuming the server returns JSON data
         })
-      );
+        .then((data) => {
+          console.log("Tags applied to photo ID:", photoId);
+          return data;
+        })
+        .catch((error) => {
+          console.error("Request failed:", error); // Handle request errors here
+          throw new Error(error); // Rethrow to handle in the outer catch block
+        })
+    );
 
-      await Promise.all(updatePromises);
+    await Promise.all(updatePromises);
 
-      setPhotos(prev => prev.map(photo => {
-        if (selectedPhotos.has(photo.id)) {
-          return {
-            ...photo,
-            tags: [...new Set([...photo.tags, ...tagsToApply])]
-          };
-        }
-        return photo;
-      }));
+    toast({
+      title: "Tags added",
+      description: `added ${tagsToApply} to ${selectedPhotos.size} photos`,
+    });
 
-      setSelectedPhotos(new Set());
-      
-      toast({
-        title: 'Success',
-        description: 'Tags applied successfully'
-      });
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to apply tags',
-        variant: 'destructive'
-      });
-    }
   };
 
   const handleDeletePhotos = async () => {
     try {
-      const deletePromises = Array.from(selectedPhotos).map(photoId =>
+      const deletePromises = Array.from(selectedPhotos).map((photoId) =>
         fetch(`/api/admin/images/${photoId}`, {
-          method: 'DELETE'
+          method: "DELETE",
         })
       );
 
       await Promise.all(deletePromises);
 
-      setPhotos(prev => prev.filter(photo => !selectedPhotos.has(photo.id)));
+      setPhotos((prev) =>
+        prev.filter((photo) => !selectedPhotos.has(photo.id))
+      );
       setSelectedPhotos(new Set());
-      
+
       toast({
-        title: 'Success',
-        description: 'Photos deleted successfully'
+        title: "Success",
+        description: "images deleted successfully",
       });
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Failed to delete photos',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to delete images",
+        variant: "destructive",
       });
     }
   };
@@ -214,46 +190,49 @@ const AdminDashboard = () => {
   const handleDeleteTag = async (tagName) => {
     try {
       const response = await fetch(`/api/admin/tags/${tagName}`, {
-        method: 'DELETE'
+        method: "DELETE",
       });
 
       if (!response.ok) {
-        throw new Error('Failed to delete tag');
+        throw new Error("Failed to delete tag");
       }
 
-      setTags(prev => prev.filter(tag => tag.name !== tagName));
-      
-      // Update photos that had this tag
-      setPhotos(prev => prev.map(photo => ({
-        ...photo,
-        tags: photo.tags.filter(tag => tag !== tagName)
-      })));
-      
+      setTags((prev) => prev.filter((tag) => tag.name !== tagName));
+
+      // Update images that had this tag
+      setPhotos((prev) =>
+        prev.map((photo) => ({
+          ...photo,
+          tags: photo.tags.filter((tag) => tag !== tagName),
+        }))
+      );
+
       toast({
-        title: 'Success',
-        description: 'Tag deleted successfully'
+        title: "Success",
+        description: "Tag deleted successfully",
       });
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Failed to delete tag',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to delete tag",
+        variant: "destructive",
       });
     }
   };
 
-  if (isLoading) {
-    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="flex gap-4 p-6">
       <div className="w-1/3 space-y-6">
-        <PhotoUploadSection 
-          tags={tags} 
-          onUpload={handlePhotoUpload} 
-        />
-        <TagManagementSection 
+        <PhotoUploadSection tags={tags} onUpload={handlePhotoUpload} />
+        <TagManagementSection
           tags={tags}
           onTagCreate={handleTagCreate}
           onTagUpdate={handleTagUpdate}
@@ -261,8 +240,8 @@ const AdminDashboard = () => {
         />
       </div>
       <div className="w-2/3">
-        <PhotoAlbumSection 
-          photos={photos}
+        <PhotoAlbumSection
+          photos={images}
           tags={tags}
           selectedPhotos={selectedPhotos}
           onPhotoSelect={handlePhotoSelect}

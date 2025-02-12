@@ -12,7 +12,7 @@ export default function AboutMe() {
         <Image
           src="/Images/people2.jpg" // Make sure to place the image in /public
           alt="Background"
-          layout="fill"
+          fill
           objectFit="cover"
           className="z-0"
         />

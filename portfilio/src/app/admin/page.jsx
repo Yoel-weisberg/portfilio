@@ -1,21 +1,51 @@
 import { headers } from 'next/headers';
 import { getSession } from '@auth0/nextjs-auth0';
 import AdminDashboard from '@/components/AdminDashboard';
-export default async function AdminPage() {
-  // Get the session using headers to ensure proper cookie handling
-  const session = await getSession(headers());
-  if (!session) {
-    return (<p>No session found</p>)
-  }
-  if (!session.user.roleType.includes('admin')) {
-    return (<p>You are not allowed to acsses this part {session.user.email}</p>)
-  }
+import { redirect } from 'next/navigation';
 
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
-      <p>Welcome to the admin area, {session.user.email}!</p>
-      <AdminDashboard />
-    </div>
-  );
+export default async function AdminPage() {
+  try {
+    // Get the session using headers to ensure proper cookie handling
+    const session = await getSession(headers());
+    
+    if (!session) {
+      // Redirect to login if no session exists
+      redirect('/api/auth/login');
+    }
+
+    // Check if user has admin role
+    if (!session.user.roleType?.includes('admin')) {
+      return (
+        <div className="p-4">
+          <p className="dark:text-white">
+            Access denied. You do not have administrator privileges.
+            <br />
+            Account: {session.user.email}
+          </p>
+        </div>
+      );
+    }
+
+    // Render admin dashboard for authenticated admin users
+    return (
+      <div className="p-4">
+        <h1 className="text-2xl font-bold mb-4 dark:text-white">
+          Admin Dashboard
+        </h1>
+        <p className="dark:text-white mb-4">
+          Welcome to the admin area, {session.user.email}!
+        </p>
+        <AdminDashboard />
+      </div>
+    );
+  } catch (error) {
+    console.error('Error in admin page:', error);
+    return (
+      <div className="p-4">
+        <p className="dark:text-white">
+          An error occurred while loading the admin page. Please try again later.
+        </p>
+      </div>
+    );
+  }
 }

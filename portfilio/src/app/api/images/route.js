@@ -16,7 +16,6 @@ export async function GET() {
     
     
     // Parse tags from JSON string
-    console.log(images[0].tags)
     const imagesWithTags = images.map(img => ({
       ...img,
       // If `tags` is a JSON string, you can use JSON.parse() here.

@@ -9,7 +9,6 @@ export async function GET() {
     const tags = await prisma.tag.findMany();
 
     // Map the result to include the thumbnail's src in the response
-    console.log(tags)
 
     return NextResponse.json(tags);
   } catch (error) {
