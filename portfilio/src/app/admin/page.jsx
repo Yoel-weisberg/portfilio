@@ -1,8 +1,7 @@
 import { headers } from 'next/headers';
 import { getSession } from '@auth0/nextjs-auth0';
-import AdminDashboard from '@/components/AdminDashboard';
 import { redirect } from 'next/navigation';
-
+import UploadImages from '@/components/FileUploed';
 export default async function AdminPage() {
   try {
     // Get the session using headers to ensure proper cookie handling
@@ -35,7 +34,7 @@ export default async function AdminPage() {
         <p className="dark:text-white mb-4">
           Welcome to the admin area, {session.user.email}!
         </p>
-        <AdminDashboard />
+        <UploadImages />
       </div>
     );
   } catch (error) {

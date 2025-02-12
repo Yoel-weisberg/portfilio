@@ -11,13 +11,12 @@ const CatalogsComp = () => {
   const { images, tags, loading } = useData();
   const router = useRouter();
 
-  // State to store tag thumbnails
-  const getFirstPhotoOfTag = (tag) => {
-    const photos = images.filter((image) => image.tags.includes(tag.id));
-    return photos[0] || null;
+  const getImagesOfTag = (tag) => {
+    const photos = images.filter((image) => image.tags.includes(tag));
+    return photos;
   }
 
-
+  console.log(images, tags, loading);
   // Fetch thumbnails on mou
 
   if (loading) return <p>Loading...</p>;
@@ -44,7 +43,7 @@ const CatalogsComp = () => {
       >
         <ScrollArea className="w-11/12 whitespace-nowrap rounded-md mx-auto">
           <div className="flex w-max space-x-8 p-4 mb-4">
-            {tags.map((tag) => (
+            {tags.map((tag) => getImagesOfTag(tag.id).length > 0 && (
               <figure
                 key={tag.name}
                 className="shrink-0 relative cursor-pointer transition-transform duration-500 hover:scale-105"
@@ -55,7 +54,7 @@ const CatalogsComp = () => {
                     {tag.name}
                   </div>
                   <Image
-                    src={getFirstPhotoOfTag(tag.id) || "/placeholder.jpg"}
+                    src={getImagesOfTag(tag.id)[0] || "/placeholder.jpg"}
                     alt={tag.name}
                     className="h-fit w-fit object-cover"
                     width={400}
@@ -66,7 +65,7 @@ const CatalogsComp = () => {
             ))}
           </div>
           <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+          </ScrollArea>
       </motion.div>
     </div>
   );
