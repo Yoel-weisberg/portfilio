@@ -11,17 +11,17 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;    /* Made thinner */
-  height: 3px;   /* Made shorter */
+  width: 6px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent; /* Changed from display: none to transparent */
 }
 
 ::-webkit-scrollbar-thumb {
   background: #666666;
-  border-radius: 20px;   /* More rounded corners */
+  border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -38,4 +38,11 @@ html {
   :root {
     --radius: 0.5rem;
   }
+}
+
+.bg-header {
+  background-image: url('/BackgroundPhoto.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

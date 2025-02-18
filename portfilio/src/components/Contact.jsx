@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 const ContactPage = () => {
@@ -26,7 +26,6 @@ const ContactPage = () => {
     }
 
     try {
-      console.log(formData);
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
@@ -38,7 +37,7 @@ const ContactPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Email sent successfully!");
+        setSubmitted(true)
       } else {
         alert("Error: " + data.message);
       }
@@ -48,8 +47,22 @@ const ContactPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (submitted) {
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setSubmitted(false);
+      }, 500); // Display success message for 5 seconds before hiding it again
+    }
+  }, [submitted]);
+
   return (
-    <div className="min-h-screen dark:text-white flex" id="Contact">
+    <div className="min-h-screen dark:text-white flex" id="Contact" suppressHydrationWarning={true}>
       {/* Left Side - Contact Form */}
       <div className="w-3/4 max-sm:w-full p-16 flex flex-col justify-center">
         <h1 className="text-8xl font-bold mb-12 tracking-tight">Let's talk</h1>

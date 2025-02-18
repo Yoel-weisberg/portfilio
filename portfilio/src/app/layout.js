@@ -22,11 +22,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" >
       <ErrorBoundary >
       <DataProvider>
         <UserProvider>
-          <body
+          <body suppressHydrationWarning={true}
             className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-black bg-white`}
           >
               {/* Navigation */}

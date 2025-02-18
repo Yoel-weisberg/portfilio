@@ -16,7 +16,6 @@ const CatalogsComp = () => {
     return photos;
   };
 
-  console.log(images, tags, loading);
   // Fetch thumbnails on mou
 
   if (loading) return <p>Loading...</p>;
@@ -60,6 +59,7 @@ const CatalogsComp = () => {
                     // width={400}
                     // height={400}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
               </figure>

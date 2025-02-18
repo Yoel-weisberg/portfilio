@@ -122,7 +122,6 @@ const AdminDashboard = () => {
     const newTags = tagsToApply
       .map((name) => tags.find((tag) => tag.name === name)?.id)
       .filter((id) => id !== undefined); // Remove undefined values if a name doesn't exist
-    console.log("applyTags", newTags);
     const updatePromises = Array.from(selectedPhotos).map((photoId) =>
       fetch(`/api/admin/images/${photoId}/tags`, {
         method: "PUT",
@@ -133,7 +132,6 @@ const AdminDashboard = () => {
       })
         .then((response) => {
           if (!response.ok) {
-            console.log(response.body.error);
             return Promise.reject(
               "Failed to apply tags for photo ID: " + photoId
             );
@@ -141,7 +139,6 @@ const AdminDashboard = () => {
           return response.json(); // Assuming the server returns JSON data
         })
         .then((data) => {
-          console.log("Tags applied to photo ID:", photoId);
           return data;
         })
         .catch((error) => {
