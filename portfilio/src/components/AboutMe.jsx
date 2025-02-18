@@ -8,13 +8,13 @@ export default function AboutMe() {
   return (
     <div id="about" className="relative w-full h-screen">
       {/* Background Image */}
-      <div className="absolute inset-0">
+      <div className=" absolute inset-0 ">
         <Image
           src="/people2.jpg" // Make sure to place the image in /public
           alt="Background"
           fill
-          objectFit="cover"
-          className="z-0"
+          style={{ objectFit: "cover" }}
+          className="z-0 "
         />
         <div className="absolute inset-0 bg-black/40"></div> {/* Dark overlay */}
       </div>

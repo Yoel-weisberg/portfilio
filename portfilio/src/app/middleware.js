@@ -1,6 +1,8 @@
 import { withMiddlewareAuthRequired, getSession } from '@auth0/nextjs-auth0/edge';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
+import { notFound } from "next/navigation";
+
 
 export default withMiddlewareAuthRequired(
   async function middleware(req) {
@@ -13,7 +15,7 @@ export default withMiddlewareAuthRequired(
       if (path.startsWith('/admin') || path.startsWith('/api/admin')) {
         // If no user or no roles claim, deny access
         if (!session || !session.user.roles?.includes('admin')) {
-          return NextResponse.redirect(new URL('/unauthorized', req.url));
+          notFound()
         }
       }
       

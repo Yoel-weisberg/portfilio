@@ -2,8 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Header from "@/components/Header";
-import { Toaster } from "@/components/ui/toaster"
-
+import { Toaster } from "@/components/ui/toaster";
+import ErrorBoundary from "@/components/ErrorBoundry";
+import Footer from "@/components/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,18 +23,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-        <DataProvider>
-          <UserProvider>
-            <body
-              className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-black bg-white`}
-            >
+      <ErrorBoundary >
+      <DataProvider>
+        <UserProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-black bg-white`}
+          >
               {/* Navigation */}
               <Header />
               {children}
+              <Footer />
               <Toaster />
-            </body>
-          </UserProvider>
-        </DataProvider>
+          </body>
+        </UserProvider>
+      </DataProvider>
+      </ErrorBoundary>
     </html>
   );
 }

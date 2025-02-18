@@ -8,9 +8,30 @@ body {
 
 html {
   scroll-behavior: smooth;
-  ::-webkit-scrollbar {
-    display: none;
-  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;    /* Made thinner */
+  height: 3px;   /* Made shorter */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666666;
+  border-radius: 20px;   /* More rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #666666 transparent;
 }
 
 @layer base {

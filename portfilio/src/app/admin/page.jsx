@@ -2,30 +2,31 @@ import { headers } from 'next/headers';
 import { getSession } from '@auth0/nextjs-auth0';
 import { redirect } from 'next/navigation';
 import UploadImages from '@/components/FileUploed';
+
 export default async function AdminPage() {
+  // Get session securely
+  const session = await getSession({ headers: headers() });
+
+  // Redirect to login if no session exists
+  if (!session || !session.user) {
+    redirect('/api/auth/login');
+  }
+
+  // Check if user has the admin role
+  if (!session.user.roleType?.includes('admin')) {
+    return (
+      <div className="p-4">
+        <p className="dark:text-white">
+          Access denied. You do not have administrator privileges.
+          <br />
+          Account: {session.user.email}
+        </p>
+      </div>
+    );
+  }
+
   try {
-    // Get the session using headers to ensure proper cookie handling
-    const session = await getSession(headers());
-    
-    if (!session) {
-      // Redirect to login if no session exists
-      redirect('/api/auth/login');
-    }
-
-    // Check if user has admin role
-    if (!session.user.roleType?.includes('admin')) {
-      return (
-        <div className="p-4">
-          <p className="dark:text-white">
-            Access denied. You do not have administrator privileges.
-            <br />
-            Account: {session.user.email}
-          </p>
-        </div>
-      );
-    }
-
-    // Render admin dashboard for authenticated admin users
+    // Render admin dashboard for authorized users
     return (
       <div className="p-4">
         <h1 className="text-2xl font-bold mb-4 dark:text-white">

@@ -7,7 +7,7 @@ async function main() {
   const image1 = await prisma.image.create({
     data: {
       src: "/Images/landscape1.jpg",
-      thumbnail: "/Images/landscape1.jpg",
+      thumbnail: "/Images/landscape1.jpg",  // Thumbnail is directly assigned
       alt: "A beautiful nature scene",
       width: 800,
       height: 600
@@ -17,7 +17,7 @@ async function main() {
   const image2 = await prisma.image.create({
     data: {
       src: "/Images/people1.jpg",
-      thumbnail: "/Images/people1.jpg",
+      thumbnail: "/Images/people1.jpg",  // Thumbnail is directly assigned
       alt: "A busy urban scene",
       width: 800,
       height: 600
@@ -29,7 +29,7 @@ async function main() {
     data: {
       name: "Landscape",
       description: "Nature-related images",
-      thumbnail: image1.id,  // Using image1's ID after creating the image
+      thumbnail: { connect: { id: image1.id } },  // Connect image1 as the thumbnail
     },
   });
 
@@ -37,11 +37,11 @@ async function main() {
     data: {
       name: "People",
       description: "Urban-related images",
-      thumbnail: image2.id,  // Using image2's ID after creating the image
+      thumbnail: { connect: { id: image2.id } },  // Connect image2 as the thumbnail
     },
   });
 
-  // Associate images with tags
+  // Associate images with tags (many-to-many relation)
   await prisma.image.update({
     where: { id: image1.id },
     data: {
