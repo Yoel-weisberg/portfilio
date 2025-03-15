@@ -62,7 +62,7 @@ const ContactPage = () => {
   }, [submitted]);
 
   return (
-    <div className="min-h-screen dark:text-white flex" id="Contact" suppressHydrationWarning={true}>
+    <div className="min-h-screen dark:text-white flex " id="Contact" suppressHydrationWarning={true}>
       {/* Left Side - Contact Form */}
       <div className="w-3/4 max-sm:w-full p-16 flex flex-col justify-center">
         <h1 className="text-8xl font-bold mb-12 tracking-tight">Let's talk</h1>

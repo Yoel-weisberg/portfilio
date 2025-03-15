@@ -1,49 +1,103 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button"
-import { motion, useAnimation } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function AboutMe() {
-    const router = useRouter();
+  const router = useRouter();
+  const [showContent, setShowContent] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isTextHovered, setIsTextHovered] = useState(false);
+  const eyeIconRef = useRef(null);
+  
+  // Effect to scale the icon when text is hovered
+  useEffect(() => {
+    if (eyeIconRef.current) {
+      if (isTextHovered) {
+        eyeIconRef.current.classList.add('scale-125');
+      } else {
+        eyeIconRef.current.classList.remove('scale-125');
+      }
+    }
+  }, [isTextHovered]);
+  
   return (
-    <div id="about" className="relative w-full h-screen">
+    <div
+      id="about"
+      className="relative w-11/12 mx-auto h-screen max-sm:h-96"
+    >
       {/* Background Image */}
-      <div className=" absolute inset-0 ">
+      <div className="absolute inset-0 bg-black">
         <Image
-          src="/people2.jpg" // Make sure to place the image in /public
+          src="/people2.jpg"
           alt="Background"
           fill
-          style={{ objectFit: "cover" }}
-          className="z-0 "
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          className="z-0 opacity-100"
+          priority
         />
-        <div className="absolute inset-0 bg-black/40"></div> {/* Dark overlay */}
+      </div>
+
+      {/* Toggle Icon - Now in bottom right with 75% opacity */}
+      <div 
+        ref={eyeIconRef}
+        className={`absolute bottom-10 right-10 z-20 cursor-pointer transition-all duration-300 ${isHovering ? 'scale-110' : ''}`}
+        onClick={() => setShowContent(!showContent)}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        title="Toggle content visibility"
+      >
+        {showContent ? (
+          <Eye 
+            size={28} 
+            className={`text-black opacity-100 ${isHovering || isTextHovered ? 'filter drop-shadow-lg shadow-white' : ''}`} 
+          />
+        ) : (
+          <EyeOff 
+            size={28} 
+            className={`text-black ${isHovering || isTextHovered ? 'filter drop-shadow-lg shadow-white' : ''}`} 
+          />
+        )}
       </div>
 
       {/* Content Section */}
-      <motion.div
-          className="max-w-4xl"
-          initial={{ opacity: 0, y: 50 }}  // Starts invisible and lower
-          whileInView={{ opacity: 1, y: 0 }} // Animates to normal position
-          transition={{ duration: 1, ease: "easeOut" }} // Smooth animation
+      {showContent && (
+        <motion.div
+          className="max-w-[%] max-sm:max-w-full"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-      <div className="relative flex flex-col h-full text-white px-8 md:px-20 lg:px-32 z-10 gap-10 pt-36">
-        <h1 className="text-6xl font-bold">About me</h1>
-        <p className="max-w-2xl mt-4 text-lg leading-relaxed">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
+          <div className="relative flex flex-col h-full text-white px-8 md:px-20 lg:px-32 z-10 gap-10 pt-36 max-sm:pt-20">
+            <h1 className="text-6xl max-sm:text-3xl font-bold">About me</h1>
+            
+            <p className="max-w-2xl mt-4 max-sm:-mt-7 text-lg max-sm:text-xs leading-relaxed">
+              Here there is usually a brief explanation about me. But since I think
+              1 photo is equal 1000 words I'll just let you enjoy this photo I took
+              at Sarasota Beach USA. 
+              <span 
+                className="underline cursor-pointer hover:text-yellow-200 transition-colors"
+                onMouseEnter={() => setIsTextHovered(true)}
+                onMouseLeave={() => setIsTextHovered(false)}
+                onClick={() => setShowContent(false)}
+              >
+                BTW if you would like to see only the photo without the fuzz around. just click on the eye icon in the bottom right
+              </span>
+            </p>
 
-
-        {/* Contact Button */}
-        <button className="mt-6 px-6 py-3 w-[200px] bg-white text-black font-semibold rounded-full shadow-lg hover:bg-gray-200 transition"
+            {/* Contact Button */}
+            <button
+              className="mt-6 max-sm:-mt-4 px-6 max-sm:px-3 py-3 w-[200px] max-sm:w-[100px] bg-white text-black font-semibold rounded-full shadow-lg hover:bg-gray-200 transition max-sm:text-xs"
               onClick={() => {
-                router.push("/Gallary"); // Automatically go to Dashboard
+                router.push("/Gallary");
               }}
-        >
-          View gallary
-        </button>
-      </div>
-      </motion.div>
-
+            >
+              View gallery
+            </button>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }
