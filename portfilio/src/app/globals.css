@@ -8,13 +8,41 @@ body {
 
 html {
   scroll-behavior: smooth;
-  ::-webkit-scrollbar {
-    display: none;
-  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Changed from display: none to transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666666;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #666666 transparent;
 }
 
 @layer base {
   :root {
     --radius: 0.5rem;
   }
+}
+
+.bg-header {
+  background-image: url('/BackgroundPhoto.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

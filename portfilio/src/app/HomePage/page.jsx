@@ -10,8 +10,8 @@ const HomePage = ({ selectedImage }) => {
   return (
     <div>
       <HeaderHomePage />
-      <AboutMe />
       <CatalogsComp />
+      <AboutMe />
       <ContactSection />
     </div>
   );

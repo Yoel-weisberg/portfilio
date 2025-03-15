@@ -23,7 +23,7 @@ const NavigationBarItem = ({ href, Text }) => {
   };
 
   return (
-    <NavigationMenuItem>
+    <NavigationMenuItem className="inline-flex items-center">
       <Button
         variant="ghost"
         className={`${
