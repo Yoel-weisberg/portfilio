@@ -27,7 +27,7 @@ function renderNextImage({ alt = "", title, sizes }, { photo, width, height }) {
         fill
         src={photo.src}
         alt="alt"
-        title={photo.title}
+        title={photo.alt}
         sizes="(max-width: 1200px) 100vw, 1200px"
         className="object-cover"
         quality={90}
@@ -38,7 +38,12 @@ function renderNextImage({ alt = "", title, sizes }, { photo, width, height }) {
 
 const PhotoGrid = ({ images }) => {
     const [index, setIndex] = React.useState(-1);
-    console.log(images)
+    const formattedImages = images.map(image => ({
+      src: image.src,
+      alt: image.alt,
+      width: image.width || 800,  // Replace with actual width
+      height: image.height || 600, // Replace with actual height
+    }));
   return (
     <div>
       <motion.div
@@ -48,7 +53,7 @@ const PhotoGrid = ({ images }) => {
         transition={{ duration: 1, ease: "easeOut" }} // Smooth animation
       >
         <RowsPhotoAlbum
-          photos={images}
+          photos={formattedImages}
           onClick={({ index: current }) => setIndex(current)}
           render={{ image: renderNextImage }}
           defaultContainerWidth={1200}
@@ -63,7 +68,7 @@ const PhotoGrid = ({ images }) => {
 
       <Lightbox
         index={index}
-        slides={images}
+        slides={formattedImages}
         open={index >= 0}
         close={() => setIndex(-1)}
         render={{ slide: NextJsImage }}
