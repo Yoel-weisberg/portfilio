@@ -11,10 +11,7 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
-/portfilio/public
-./imagesForPortfilio
-
-/portfilio/public
+/portfilio/public/uploads
 ./imagesForPortfilio
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
