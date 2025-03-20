@@ -1,0 +1,45 @@
+[
+  {
+    "id": "landscape",
+    "name": "Landscape",
+    "description": "Capturing the beauty of natural scenery and environments",
+    "featured": true,
+    "coverImage": "landscape-cover.jpg"
+  },
+  {
+    "id": "portrait",
+    "name": "Portrait",
+    "description": "Focusing on the personality and mood of individuals",
+    "featured": true,
+    "coverImage": "portrait-cover.jpg"
+  },
+  {
+    "id": "wildlife",
+    "name": "Wildlife",
+    "description": "Documenting animals in their natural habitats",
+    "featured": true,
+    "coverImage": "wildlife-cover.jpg"
+  },
+  {
+    "id": "architecture",
+    "name": "Architecture",
+    "description": "Exploring the design and structure of buildings",
+    "featured": false,
+    "coverImage": "architecture-cover.jpg"
+  },
+  {
+    "id": "street",
+    "name": "Street",
+    "description": "Capturing candid moments of everyday life in public spaces",
+    "featured": true,
+    "coverImage": "street-cover.jpg"
+  },
+  {
+    "id": "abstract",
+    "name": "Abstract",
+    "description": "Exploring shapes, colors, and forms in unconventional ways",
+    "featured": false,
+    "coverImage": "abstract-cover.jpg"
+  }
+]
+

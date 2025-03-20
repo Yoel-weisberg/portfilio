@@ -1,0 +1,103 @@
+[
+  {
+    "id": "img001",
+    "title": "Mountain Vista",
+    "description": "A breathtaking view of mountain ranges at sunset",
+    "collection": "landscape",
+    "location": "Rocky Mountains, Colorado",
+    "date": "2023-06-15",
+    "featured": true,
+    "url": "landscape-001.jpg"
+  },
+  {
+    "id": "img002",
+    "title": "Urban Skyline",
+    "description": "City skyline with dramatic clouds at dusk",
+    "collection": "landscape",
+    "location": "New York City, NY",
+    "date": "2023-07-22",
+    "featured": true,
+    "url": "landscape-002.jpg"
+  },
+  {
+    "id": "img003",
+    "title": "Portrait Study",
+    "description": "Emotional portrait with natural lighting",
+    "collection": "portrait",
+    "location": "Studio",
+    "date": "2023-05-10",
+    "featured": true,
+    "url": "portrait-001.jpg"
+  },
+  {
+    "id": "img004",
+    "title": "Wildlife Encounter",
+    "description": "Close-up of a fox in its natural habitat",
+    "collection": "wildlife",
+    "location": "Yellowstone National Park",
+    "date": "2023-08-05",
+    "featured": true,
+    "url": "wildlife-001.jpg"
+  },
+  {
+    "id": "img005",
+    "title": "Modern Architecture",
+    "description": "Geometric patterns of a contemporary building",
+    "collection": "architecture",
+    "location": "Chicago, IL",
+    "date": "2023-09-18",
+    "featured": false,
+    "url": "architecture-001.jpg"
+  },
+  {
+    "id": "img006",
+    "title": "Street Life",
+    "description": "Candid moment of city life during rush hour",
+    "collection": "street",
+    "location": "Tokyo, Japan",
+    "date": "2023-04-12",
+    "featured": true,
+    "url": "street-001.jpg"
+  },
+  {
+    "id": "img007",
+    "title": "Abstract Forms",
+    "description": "Study of light and shadow creating abstract patterns",
+    "collection": "abstract",
+    "location": "Studio",
+    "date": "2023-10-30",
+    "featured": false,
+    "url": "abstract-001.jpg"
+  },
+  {
+    "id": "img008",
+    "title": "Desert Landscape",
+    "description": "Vast desert landscape with dramatic dunes",
+    "collection": "landscape",
+    "location": "Sahara Desert",
+    "date": "2023-03-25",
+    "featured": true,
+    "url": "landscape-003.jpg"
+  },
+  {
+    "id": "img009",
+    "title": "Architectural Detail",
+    "description": "Close-up of intricate architectural details",
+    "collection": "architecture",
+    "location": "Barcelona, Spain",
+    "date": "2023-07-08",
+    "featured": true,
+    "url": "architecture-002.jpg"
+  },
+  {
+    "id": "img010",
+    "title": "Street Portrait",
+    "description": "Candid portrait of a stranger on the street",
+    "collection": "portrait",
+    "location": "Paris, France",
+    "date": "2023-05-17",
+    "featured": false,
+    "url": "portrait-002.jpg"
+  }
+]
+
