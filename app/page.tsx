@@ -203,7 +203,7 @@ export default function Home() {
                     View gallary <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full text-black">
+                <Button asChild variant="outline" size="lg" className="rounded-full">
                   <Link href="/about">About Me</Link>
                 </Button>
               </div>
@@ -346,7 +346,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center mt-8 md:mt-12 text-black">
+          <div className="text-center mt-8 md:mt-12 ">
             <Button asChild variant="outline" size="lg" className="rounded-full">
               <Link href="/collections">
                 View All Collections <ArrowRight className="ml-2 h-4 w-4" />
@@ -388,7 +388,7 @@ export default function Home() {
               My work focuses on finding unique perspectives and telling stories through imagery. I'm constantly
               learning and evolving my craft to bring fresh perspectives to my photography.
             </p>
-            <Button asChild variant="outline" className="rounded-full text-black">
+            <Button asChild variant="outline" className="rounded-full ">
               <Link href="/about">
                 Learn More <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -410,7 +410,7 @@ export default function Home() {
             <p className="text-gray-300 max-w-2xl mx-auto mb-8">
               Interested in working together? Feel free to reach out.
             </p>
-            <div className="flex justify-center gap-4 mb-8 text-black">
+            <div className="flex justify-center gap-4 mb-8 ">
               <Button variant="outline" size="icon" className="rounded-full">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
