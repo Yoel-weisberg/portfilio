@@ -6,6 +6,7 @@ import { Menu } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Camera } from "lucide-react"
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -38,8 +39,8 @@ export default function Navbar() {
       )}
     >
       <div className="container px-4 mx-auto flex justify-between items-center">
-        <Link href="/" className="text-white font-bold text-xl z-50">
-          PORTFOLIO
+        <Link href="/" className="text-white font-bold text-xl z-50 flex gap-2">
+          <Camera /> YOEL WEISBERG
         </Link>
 
         {/* Desktop Navigation */}

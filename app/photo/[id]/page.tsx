@@ -154,7 +154,7 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
           <div className="mt-20">
             <h2 className="text-2xl font-bold mb-8">You May Also Like</h2>
             <div className="relative">
-              <div className="flex gap-6 overflow-x-auto pb-4 snap-x">
+              <div className="flex gap-6 overflow-x-auto pb-4 snap-x justify-center">
                 {relatedPhotos.map((relatedPhoto, index) => {
                   const relatedAspectRatioClass = {
                     portrait: "aspect-[9/16]",
@@ -168,7 +168,7 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`group relative overflow-hidden rounded-lg ${relatedAspectRatioClass}`}
+                        className={`group relative overflow-hidden rounded-lg aspect-square`}
                       >
                         <Image
                           src={getImageUrl(relatedPhoto.url) || "/placeholder.svg"}
