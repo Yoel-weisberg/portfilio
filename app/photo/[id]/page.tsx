@@ -154,7 +154,7 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
           <div className="mt-20">
             <h2 className="text-2xl font-bold mb-8">You May Also Like</h2>
             <div className="relative">
-              <div className="flex gap-6 overflow-x-auto pb-4 snap-x justify-center">
+              <div className="flex gap-6 overflow-x-auto pb-4 snap-x">
                 {relatedPhotos.map((relatedPhoto, index) => {
                   const relatedAspectRatioClass = {
                     portrait: "aspect-[9/16]",
