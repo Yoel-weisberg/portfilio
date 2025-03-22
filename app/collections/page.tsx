@@ -4,11 +4,63 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { type RenderImageContext, type RenderImageProps, RowsPhotoAlbum } from "react-photo-album"
+import "react-photo-album/rows.css"
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getCollections, getImagesByCollection } from "@/lib/data"
 import { getImageUrl } from "@/lib/image-utils"
+
+// Custom render function for Next.js Image component
+function renderNextImage(
+  { alt = "", title, sizes }: RenderImageProps,
+  { photo, width, height, onClick }: RenderImageContext,
+) {
+  return (
+    <div
+      style={{
+        width: "100%",
+        position: "relative",
+        aspectRatio: `${width} / ${height}`,
+      }}
+      className="group overflow-hidden rounded-lg rounded-none"
+    >
+      <Image
+        fill
+        src={photo.src || "/placeholder.svg"}
+        alt={alt}
+        title={title}
+        sizes={sizes}
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        onClick={onClick}
+      />
+
+      {/* Overlay with title and info */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 md:p-6">
+        <div>
+          <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2">{photo.title}</h3>
+          <p className="text-xs md:text-sm text-gray-300 capitalize mb-2 md:mb-4">
+            {photo.collectionName} • {photo.location}
+          </p>
+          <Button asChild size="sm" className="rounded-full text-xs md:text-sm px-3 py-1 h-auto md:h-9">
+            <Link href={`/photo/${photo.id}`}>View Details</Link>
+          </Button>
+        </div>
+      </div>
+
+      <Link href={`/photo/${photo.id}`} className="absolute inset-0">
+        <span className="sr-only">View {photo.title}</span>
+      </Link>
+
+      {photo.featured && (
+        <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-primary-foreground text-xs font-medium py-1 px-2 rounded-full">
+          Featured
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function CollectionsPage() {
   // Get collections from our data
@@ -40,18 +92,35 @@ export default function CollectionsPage() {
     }
   }, [collections])
 
-  // Get photos for each collection
+  // Get photos for each collection and format for react-photo-album
   const allPhotos = collections.flatMap((collection) => {
     const collectionImages = getImagesByCollection(collection.id)
-    return collectionImages.map((image) => ({
-      id: image.id,
-      title: image.title,
-      collection: collection.id,
-      collectionName: collection.name,
-      featured: image.featured,
-      url: image.url,
-      location: image.location,
-    }))
+    return collectionImages.map((image) => {
+      // Calculate width and height based on aspect ratio
+      let width = 1000
+      let height = 1000
+
+      if (image.aspectRatio === "landscape") {
+        width = 1600
+        height = 900
+      } else if (image.aspectRatio === "portrait") {
+        width = 900
+        height = 1600
+      }
+
+      return {
+        src: getImageUrl(image.url) || "/placeholder.svg",
+        width,
+        height,
+        id: image.id,
+        title: image.title,
+        collection: collection.id,
+        collectionName: collection.name,
+        featured: image.featured,
+        location: image.location,
+        aspectRatio: image.aspectRatio,
+      }
+    })
   })
 
   const filteredPhotos = activeTab === "all" ? allPhotos : allPhotos.filter((photo) => photo.collection === activeTab)
@@ -102,70 +171,37 @@ export default function CollectionsPage() {
           </div>
 
           <TabsContent value="all" className="mt-6 md:mt-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {filteredPhotos.map((photo, index) => (
-                <PhotoCard key={photo.id} photo={photo} index={index} isMobile={isMobile} />
-              ))}
-            </div>
+            <RowsPhotoAlbum
+              photos={filteredPhotos}
+              render={{ image: renderNextImage }}
+              defaultContainerWidth={1200}
+              sizes={{
+                size: "1168px",
+                sizes: [{ viewport: "(max-width: 1200px)", size: "calc(100vw - 32px)" }],
+              }}
+              spacing={16}
+              targetRowHeight={350}
+            />
           </TabsContent>
 
           {collections.map((collection) => (
             <TabsContent key={collection.id} value={collection.id} className="mt-6 md:mt-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                {filteredPhotos.map((photo, index) => (
-                  <PhotoCard key={photo.id} photo={photo} index={index} isMobile={isMobile} />
-                ))}
-              </div>
+              <RowsPhotoAlbum
+                photos={filteredPhotos}
+                render={{ image: renderNextImage }}
+                defaultContainerWidth={1200}
+                sizes={{
+                  size: "1168px",
+                  sizes: [{ viewport: "(max-width: 1200px)", size: "calc(100vw - 32px)" }],
+                }}
+                spacing={16}
+                targetRowHeight={350}
+              />
             </TabsContent>
           ))}
         </Tabs>
       </div>
     </div>
-  )
-}
-
-function PhotoCard({ photo, index, isMobile }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative overflow-hidden rounded-lg aspect-[3/4]"
-    >
-      <Image
-        src={getImageUrl(photo.url) || "/placeholder.svg"}
-        alt={photo.title}
-        fill
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 md:p-6">
-        <div>
-          <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2">{photo.title}</h3>
-          <p className="text-xs md:text-sm text-gray-300 capitalize mb-2 md:mb-4">
-            {photo.collectionName} • {photo.location}
-          </p>
-          <Button asChild size="sm" className="rounded-full text-xs md:text-sm px-3 py-1 h-auto md:h-9">
-            <Link href={`/photo/${photo.id}`}>View Details</Link>
-          </Button>
-        </div>
-      </div>
-      <Link href={`/photo/${photo.id}`} className="absolute inset-0">
-        <span className="sr-only">View {photo.title}</span>
-      </Link>
-      {photo.featured && (
-        <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-primary-foreground text-xs font-medium py-1 px-2 rounded-full">
-          Featured
-        </div>
-      )}
-
-      {/* Always visible info on mobile */}
-      {isMobile && (
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3">
-          <h3 className="text-sm font-semibold truncate">{photo.title}</h3>
-          <p className="text-xs text-gray-300 truncate">{photo.collectionName}</p>
-        </div>
-      )}
-    </motion.div>
   )
 }
 

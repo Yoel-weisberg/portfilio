@@ -39,7 +39,7 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
 
       setRelatedPhotos(collectionPhotos)
     }
-  }, [params.id])
+  }, [params.id]) // Access params.id directly
 
   if (!photo || !collection) {
     return (
@@ -48,6 +48,12 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
       </div>
     )
   }
+
+  const aspectRatioClass = {
+    portrait: "aspect-[9/16]",
+    landscape: "aspect-[16/9]",
+    square: "aspect-square",
+  }[photo.aspectRatio]
 
   return (
     <div className="bg-black text-white pt-24 pb-20">
@@ -60,12 +66,17 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
           Back to {collection.name} Collection
         </Link>
 
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">{photo.title}</h1>
+          <p className="text-gray-300 mb-4">{photo.description}</p>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative aspect-[4/5] rounded-lg overflow-hidden"
+            className={`relative ${aspectRatioClass} rounded-lg overflow-hidden`}
           >
             <Dialog>
               <DialogTrigger asChild>
@@ -116,7 +127,6 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">{photo.title}</h1>
             <div className="flex gap-4 text-sm text-gray-400 mb-6">
               <span>{formatDate(photo.date)}</span>
               <span>•</span>
@@ -124,8 +134,6 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
               <span>•</span>
               <span>{collection.name}</span>
             </div>
-
-            <p className="text-gray-300 mb-8">{photo.description}</p>
 
             <div className="border-t border-zinc-800 pt-8">
               <h2 className="text-xl font-semibold mb-6">Details</h2>
@@ -147,29 +155,37 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
             <h2 className="text-2xl font-bold mb-8">You May Also Like</h2>
             <div className="relative">
               <div className="flex gap-6 overflow-x-auto pb-4 snap-x">
-                {relatedPhotos.map((relatedPhoto, index) => (
-                  <div key={relatedPhoto.id} className="min-w-[280px] snap-start">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="group relative overflow-hidden rounded-lg aspect-[3/4]"
-                    >
-                      <Image
-                        src={getImageUrl(relatedPhoto.url) || "/placeholder.svg"}
-                        alt={relatedPhoto.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <h3 className="text-lg font-semibold">{relatedPhoto.title}</h3>
-                      </div>
-                      <Link href={`/photo/${relatedPhoto.id}`} className="absolute inset-0">
-                        <span className="sr-only">View {relatedPhoto.title}</span>
-                      </Link>
-                    </motion.div>
-                  </div>
-                ))}
+                {relatedPhotos.map((relatedPhoto, index) => {
+                  const relatedAspectRatioClass = {
+                    portrait: "aspect-[9/16]",
+                    landscape: "aspect-[16/9]",
+                    square: "aspect-square",
+                  }[relatedPhoto.aspectRatio]
+
+                  return (
+                    <div key={relatedPhoto.id} className="min-w-[280px] snap-start">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className={`group relative overflow-hidden rounded-lg ${relatedAspectRatioClass}`}
+                      >
+                        <Image
+                          src={getImageUrl(relatedPhoto.url) || "/placeholder.svg"}
+                          alt={relatedPhoto.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                          <h3 className="text-lg font-semibold">{relatedPhoto.title}</h3>
+                        </div>
+                        <Link href={`/photo/${relatedPhoto.id}`} className="absolute inset-0">
+                          <span className="sr-only">View {relatedPhoto.title}</span>
+                        </Link>
+                      </motion.div>
+                    </div>
+                  )
+                })}
               </div>
               <Button
                 variant="outline"

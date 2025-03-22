@@ -38,7 +38,6 @@ export default function Home() {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -133,7 +132,7 @@ export default function Home() {
     coverImage: "",
   }
   const currentImage = getFirstImageFromCollection(currentCollection.id)
-
+  const ratio = currentImage?.aspectRatio === "landscape" ? "aspect-[16/9]" : currentImage?.aspectRatio === "portrait" ? "aspect-[9/16]" : currentImage?.aspectRatio === "square" ? "aspect-square" : "aspect-square"
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
@@ -176,6 +175,7 @@ export default function Home() {
                 Hey, I'm Yoel Weisberg
                 <br />a{" "}
                 <span className="relative inline-block">
+                  <Link href={`/collections#${currentCollection.id}`}>
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={currentCollection.id}
@@ -188,6 +188,7 @@ export default function Home() {
                       {currentCollection.name?.toLowerCase()}
                     </motion.span>
                   </AnimatePresence>
+                  </Link>
                 </span>{" "}
                 photographer
               </h1>
@@ -199,7 +200,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Button asChild size="lg" className="rounded-full">
                   <Link href="/collections">
-                    View Collections <ArrowRight className="ml-2 h-4 w-4" />
+                    View gallary <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-full text-black">
@@ -214,7 +215,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
+              <div className= {`relative rounded-lg aspect-square overflow-hidden shadow-2xl`}>
                 <Link href={`/collections#${currentCollection.id}`} className="block relative w-full h-full">
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -291,7 +292,7 @@ export default function Home() {
               {featuredImages.slice(0, 8).map((image, index) => (
                 <motion.div
                   key={image.id}
-                  className="group relative overflow-hidden rounded-lg aspect-[4/5] min-w-[220px] sm:min-w-[260px] md:min-w-[300px] lg:min-w-[350px] snap-start"
+                  className="group relative overflow-hidden rounded-lg aspect-[5/5] min-w-[220px] sm:min-w-[260px] md:min-w-[300px] lg:min-w-[350px] snap-start"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -345,7 +346,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center text-black mt-8 md:mt-12">
+          <div className="text-center mt-8 md:mt-12 text-black">
             <Button asChild variant="outline" size="lg" className="rounded-full">
               <Link href="/collections">
                 View All Collections <ArrowRight className="ml-2 h-4 w-4" />

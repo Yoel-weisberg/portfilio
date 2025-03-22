@@ -15,7 +15,7 @@ export default function AboutPage() {
       <div className="container px-4 mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 ">About Me</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
             <p className="text-gray-300 mb-6">
               I'm a 17-year-old photographer with a passion for capturing the beauty in everyday moments. My journey
               began when I received my first camera as a gift, and since then, I've been exploring the world through my

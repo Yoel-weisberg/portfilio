@@ -9,6 +9,8 @@ export type Collection = {
   coverImage: string
 }
 
+export type AspectRatio = "portrait" | "landscape" | "square"
+
 export type Image = {
   id: string
   title: string
@@ -18,7 +20,8 @@ export type Image = {
   date: string
   featured: boolean
   url: string
-  price: number
+  price?: number
+  aspectRatio: AspectRatio
 }
 
 // Get all collections

@@ -4,42 +4,49 @@
     "name": "Landscape",
     "description": "Capturing the beauty of natural scenery and environments",
     "featured": true,
-    "coverImage": "landscape-cover.jpg"
+    "coverImage": "arieal-over-blue-lake.jpg"
   },
   {
-    "id": "portrait",
-    "name": "Portrait",
-    "description": "Focusing on the personality and mood of individuals",
+    "id": "urban",
+    "name": "Urban",
+    "description": "City scenes, streets, and urban environments",
     "featured": true,
-    "coverImage": "portrait-cover.jpg"
-  },
-  {
-    "id": "wildlife",
-    "name": "Wildlife",
-    "description": "Documenting animals in their natural habitats",
-    "featured": true,
-    "coverImage": "wildlife-cover.jpg"
+    "coverImage": "night-lights.jpg"
   },
   {
     "id": "architecture",
     "name": "Architecture",
-    "description": "Exploring the design and structure of buildings",
-    "featured": false,
-    "coverImage": "architecture-cover.jpg"
-  },
-  {
-    "id": "street",
-    "name": "Street",
-    "description": "Capturing candid moments of everyday life in public spaces",
+    "description": "Exploring the design and structure of buildings and bridges",
     "featured": true,
-    "coverImage": "street-cover.jpg"
+    "coverImage": "brisge-of-lines.jpg"
   },
   {
-    "id": "abstract",
-    "name": "Abstract",
-    "description": "Exploring shapes, colors, and forms in unconventional ways",
+    "id": "travel",
+    "name": "Travel",
+    "description": "Journeys and destinations from around the world",
+    "featured": true,
+    "coverImage": "ny-1.jpg"
+  },
+  {
+    "id": "water",
+    "name": "Water",
+    "description": "Seas, lakes, and water elements in various forms",
+    "featured": true,
+    "coverImage": "waves.jpg"
+  },
+  {
+    "id": "culture",
+    "name": "Culture",
+    "description": "Cultural elements, traditions, and local life",
     "featured": false,
-    "coverImage": "abstract-cover.jpg"
+    "coverImage": "sook-wide.jpg"
+  },
+  {
+    "id": "night",
+    "name": "Night",
+    "description": "The beauty of scenes captured after dark",
+    "featured": false,
+    "coverImage": "overview-at-night.jpg"
   }
 ]
 
