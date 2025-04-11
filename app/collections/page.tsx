@@ -37,14 +37,16 @@ function renderNextImage(
       />
 
       {/* Overlay with title and info */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 md:p-6">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 md:p-6 ">
         <div>
-          <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2">{photo.title}</h3>
+          <h3 className="text-xs md:text-xl font-semibold mb-1 md:mb-2">{photo.title}</h3>
           <p className="text-xs md:text-sm text-gray-300 capitalize mb-2 md:mb-4">
             {photo.collectionName} • {photo.location}
           </p>
-          <Button asChild size="sm" className="rounded-full text-xs md:text-sm px-3 py-1 h-auto md:h-9">
-            <Link href={`/photo/${photo.id}`}>View Details</Link>
+          <Button asChild size="sm" className="rounded-full text-xs md:text-sm px-3 py-1 h-auto md:h-9 bg-black opacity-100">
+            <Link href={`/photo/${photo.id}`} className="opacity-100">
+              <span className="opacity-100">View Details</span>
+            </Link>
           </Button>
         </div>
       </div>
@@ -53,11 +55,6 @@ function renderNextImage(
         <span className="sr-only">View {photo.title}</span>
       </Link>
 
-      {photo.featured && (
-        <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-primary-foreground text-xs font-medium py-1 px-2 rounded-full">
-          Featured
-        </div>
-      )}
     </div>
   )
 }
@@ -123,7 +120,13 @@ export default function CollectionsPage() {
     })
   })
 
-  const filteredPhotos = activeTab === "all" ? allPhotos : allPhotos.filter((photo) => photo.collection === activeTab)
+  const sortedPhotos = allPhotos.sort((a, b) => {
+    if (a.featured && !b.featured) return -1; // Featured images come first
+    if (!a.featured && b.featured) return 1;
+    return 0; // Maintain original order for non-featured images
+  });
+
+  const filteredPhotos = activeTab === "all" ? sortedPhotos : sortedPhotos.filter((photo) => photo.collection === activeTab)
 
   // Handle tab change
   const handleTabChange = (value) => {

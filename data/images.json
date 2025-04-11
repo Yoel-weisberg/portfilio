@@ -4,19 +4,19 @@
     "title": "Aerial View Over Blue Lake",
     "description": "A breathtaking aerial view of a serene blue lake surrounded by landscape",
     "collection": "landscape",
-    "location": "Israel",
-    "date": "2023-06-15",
+    "location": "Onterio, Canada",
+    "date": "10.01.2023",
     "featured": true,
     "url": "arieal-over-blue-lake.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img002",
     "title": "Sea of Galilee",
     "description": "The historic and beautiful Sea of Galilee with its surrounding landscape",
     "collection": "landscape",
-    "location": "Israel",
-    "date": "2023-07-22",
+    "location": "Sea of Galilee, Israel",
+    "date": "1.02.2025",
     "featured": true,
     "url": "sea-of-galily.jpg",
     "aspectRatio": "landscape"
@@ -24,9 +24,9 @@
   {
     "id": "img003",
     "title": "Rocks and Water",
-    "description": "Natural rock formations meeting the water's edge",
+    "description": "A tranquil scene of rocks and water, capturing the essence of nature",
     "collection": "landscape",
-    "location": "Israel",
+    "location": "USE",
     "date": "2023-05-10",
     "featured": false,
     "url": "rocks-and-water.jpg",
@@ -41,7 +41,7 @@
     "date": "2023-08-05",
     "featured": false,
     "url": "tree-in-water.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "landscape"
   },
   {
     "id": "img005",
@@ -52,18 +52,7 @@
     "date": "2023-09-18",
     "featured": true,
     "url": "hof-dor-1.jpg",
-    "aspectRatio": "landscape"
-  },
-  {
-    "id": "img006",
-    "title": "Hof Dor Shoreline",
-    "description": "The shoreline at Hof Dor with its unique rock formations",
-    "collection": "landscape",
-    "location": "Israel",
-    "date": "2023-04-12",
-    "featured": false,
-    "url": "hof-dor-2.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img007",
@@ -74,7 +63,7 @@
     "date": "2023-10-30",
     "featured": false,
     "url": "serisota-beach.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img008",
@@ -85,46 +74,24 @@
     "date": "2023-03-25",
     "featured": false,
     "url": "serisota-split-half.jpg",
-    "aspectRatio": "square"
-  },
-  {
-    "id": "img009",
-    "title": "Lonely Road",
-    "description": "A solitary path winding through the landscape",
-    "collection": "landscape",
-    "location": "Israel",
-    "date": "2023-07-08",
-    "featured": false,
-    "url": "I-wlk-a-loenly-roed.jpg",
-    "aspectRatio": "landscape"
-  },
-  {
-    "id": "img010",
-    "title": "Bridge of Lines",
-    "description": "A modern bridge with striking linear architecture",
-    "collection": "architecture",
-    "location": "Israel",
-    "date": "2023-05-17",
-    "featured": true,
-    "url": "brisge-of-lines.jpg",
     "aspectRatio": "landscape"
   },
   {
     "id": "img011",
     "title": "Bridge Closeup",
     "description": "Detailed view of a bridge's architectural elements",
-    "collection": "architecture",
+    "collection": "urban",
     "location": "Israel",
     "date": "2023-06-20",
     "featured": false,
     "url": "closeup-brisge.jpg",
-    "aspectRatio": "square"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img012",
-    "title": "Bridge to School",
+    "title": "Cars",
     "description": "A bridge pathway leading to a school",
-    "collection": "architecture",
+    "collection": "night",
     "location": "Israel",
     "date": "2023-08-12",
     "featured": false,
@@ -140,7 +107,7 @@
     "date": "2023-09-05",
     "featured": false,
     "url": "wall-of-stones.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "landscape"
   },
   {
     "id": "img014",
@@ -151,7 +118,7 @@
     "date": "2023-07-30",
     "featured": false,
     "url": "hole-in-wall.jpg",
-    "aspectRatio": "square"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img015",
@@ -173,7 +140,7 @@
     "date": "2023-11-20",
     "featured": false,
     "url": "hosue-and-light-building.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "landscape"
   },
   {
     "id": "img017",
@@ -184,7 +151,7 @@
     "date": "2023-12-05",
     "featured": true,
     "url": "night-lights.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img018",
@@ -195,7 +162,7 @@
     "date": "2023-12-15",
     "featured": true,
     "url": "overview-at-night.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img019",
@@ -206,18 +173,18 @@
     "date": "2023-11-10",
     "featured": false,
     "url": "car-lights.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img020",
     "title": "Road in Dark",
     "description": "A mysterious road winding through the darkness",
     "collection": "night",
-    "location": "Israel",
+    "location": "USA",
     "date": "2023-10-25",
     "featured": false,
     "url": "road-in-dark.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "square"
   },
   {
     "id": "img021",
@@ -228,51 +195,29 @@
     "date": "2023-09-30",
     "featured": false,
     "url": "high-overwiew-ligth.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img022",
     "title": "New York Skyline",
     "description": "The iconic skyline of New York City",
-    "collection": "travel",
+    "collection": "urban",
     "location": "New York, USA",
     "date": "2023-08-20",
     "featured": true,
     "url": "ny-1.jpg",
-    "aspectRatio": "landscape"
-  },
-  {
-    "id": "img023",
-    "title": "New York Street Scene",
-    "description": "Bustling street life in New York City",
-    "collection": "travel",
-    "location": "New York, USA",
-    "date": "2023-08-21",
-    "featured": false,
-    "url": "ny-2.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "square"
   },
   {
     "id": "img024",
     "title": "New York Architecture",
     "description": "Striking architectural details in New York City",
-    "collection": "travel",
+    "collection": "urban",
     "location": "New York, USA",
     "date": "2023-08-22",
-    "featured": false,
+    "featured": true,
     "url": "ny-3.jpg",
     "aspectRatio": "portrait"
-  },
-  {
-    "id": "img025",
-    "title": "New York Urban Life",
-    "description": "Daily life in the urban environment of New York",
-    "collection": "travel",
-    "location": "New York, USA",
-    "date": "2023-08-23",
-    "featured": false,
-    "url": "ny-4.jpg",
-    "aspectRatio": "square"
   },
   {
     "id": "img026",
@@ -292,20 +237,20 @@
     "collection": "travel",
     "location": "Canada",
     "date": "2023-07-15",
-    "featured": false,
+    "featured": true,
     "url": "road-to-montrial.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img028",
     "title": "Entrance to Jerusalem",
     "description": "The historic gateway to the ancient city of Jerusalem",
-    "collection": "travel",
+    "collection": "night",
     "location": "Jerusalem, Israel",
     "date": "2023-06-10",
     "featured": true,
     "url": "entenrnce-jerusalem.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "square"
   },
   {
     "id": "img029",
@@ -323,11 +268,11 @@
     "title": "Waves",
     "description": "The rhythmic pattern of ocean waves",
     "collection": "water",
-    "location": "Mediterranean Sea",
+    "location": "USA",
     "date": "2023-05-05",
     "featured": true,
     "url": "waves.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img031",
@@ -338,13 +283,13 @@
     "date": "2023-04-20",
     "featured": true,
     "url": "boats.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img032",
-    "title": "Photo from Hotel",
+    "title": "Ancinat castedel",
     "description": "Scenic water view captured from a hotel window",
-    "collection": "water",
+    "collection": "urban",
     "location": "Israel",
     "date": "2023-03-15",
     "featured": false,
@@ -375,10 +320,10 @@
   },
   {
     "id": "img035",
-    "title": "Souk Wide View",
+    "title": "Sooke Wide View",
     "description": "Panoramic view of a bustling traditional market",
-    "collection": "culture",
-    "location": "Jerusalem, Israel",
+    "collection": "water",
+    "location": "East Sooke Regional Park, Canada",
     "date": "2023-01-15",
     "featured": true,
     "url": "sook-wide.jpg",
@@ -388,71 +333,65 @@
     "id": "img036",
     "title": "Crushing Olives",
     "description": "Traditional method of crushing olives for oil production",
-    "collection": "culture",
+    "collection": "food",
     "location": "Israel",
     "date": "2023-01-20",
     "featured": false,
     "url": "crushing-olive.jpg",
-    "aspectRatio": "square"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img037",
     "title": "Flying Olives",
     "description": "Olives being tossed during the harvesting process",
-    "collection": "culture",
+    "collection": "food",
     "location": "Israel",
     "date": "2023-01-21",
     "featured": false,
     "url": "flyaing-olives.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img038",
     "title": "Hanukkah Menorahs",
     "description": "Traditional Hanukkah menorahs illuminated for the holiday",
-    "collection": "culture",
+    "collection": "holydays",
     "location": "Israel",
     "date": "2022-12-20",
-    "featured": true,
+    "featured": false,
     "url": "hanukiuot.jpg",
-    "aspectRatio": "landscape"
-  },
-  {
-    "id": "2022-12-20",
-    "featured": true,
-    "url": "hanukiuot.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img039",
-    "title": "Israel Flag",
-    "description": "The flag of Israel waving in the breeze",
-    "collection": "culture",
+    "title": "Isrealy flag",
+    "description": "The flag oshown on the bridge of strings in israel",
+    "collection": "night",
     "location": "Israel",
     "date": "2022-11-15",
     "featured": false,
     "url": "israel-flag.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img040",
-    "title": "Mosque",
-    "description": "Architectural details of a traditional mosque",
+    "title": "Temple mount",
+    "description": "The trio of the westarn wall, dome of the rock and the al aqsa mosque",
     "collection": "culture",
     "location": "Israel",
     "date": "2022-10-10",
-    "featured": false,
+    "featured": true,
     "url": "masqu.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "landscape"
   },
   {
     "id": "img041",
     "title": "Food Arrangement",
     "description": "Beautifully arranged traditional food",
-    "collection": "culture",
+    "collection": "food",
     "location": "Israel",
     "date": "2022-09-05",
-    "featured": false,
+    "featured": true,
     "url": "food.jpg",
     "aspectRatio": "square"
   },
@@ -460,34 +399,23 @@
     "id": "img042",
     "title": "Vegetables on Table",
     "description": "Fresh vegetables arranged on a traditional table",
-    "collection": "culture",
+    "collection": "food",
     "location": "Israel",
     "date": "2022-09-06",
     "featured": false,
     "url": "veg-on-table.jpg",
-    "aspectRatio": "landscape"
-  },
-  {
-    "id": "img043",
-    "title": "Abba with Canoe Left",
-    "description": "Father with a canoe, captured from the left side",
-    "collection": "urban",
-    "location": "Israel",
-    "date": "2022-08-15",
-    "featured": false,
-    "url": "abba-with-cannu-left.jpg",
     "aspectRatio": "portrait"
   },
   {
     "id": "img044",
-    "title": "Abba with Canoe Forward",
-    "description": "Father with a canoe, front view",
-    "collection": "urban",
+    "title": "Canoe in lake",
+    "description": "Canoe in a lake",
+    "collection": "water",
     "location": "Israel",
     "date": "2022-08-16",
-    "featured": false,
+    "featured": true,
     "url": "abba-with-canu-forowd.jpg",
-    "aspectRatio": "portrait"
+    "aspectRatio": "landscape"
   },
   {
     "id": "img045",
@@ -498,7 +426,7 @@
     "date": "2022-07-20",
     "featured": false,
     "url": "gas-station.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "square"
   },
   {
     "id": "img046",
@@ -509,28 +437,17 @@
     "date": "2022-07-10",
     "featured": false,
     "url": "hexp-road.jpg",
-    "aspectRatio": "square"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img047",
-    "title": "From HaShalom Train",
+    "title": "TLV at Night",
     "description": "View from the HaShalom train station",
     "collection": "urban",
     "location": "Tel Aviv, Israel",
     "date": "2022-06-15",
-    "featured": false,
+    "featured": true,
     "url": "from-hashlom-train.jpg",
-    "aspectRatio": "landscape"
-  },
-  {
-    "id": "img048",
-    "title": "Train Exit",
-    "description": "Exit from a train station into the urban landscape",
-    "collection": "urban",
-    "location": "Israel",
-    "date": "2022-06-16",
-    "featured": false,
-    "url": "train-exit.jpg",
     "aspectRatio": "portrait"
   },
   {
@@ -553,24 +470,24 @@
     "date": "2022-05-10",
     "featured": false,
     "url": "aricha.jpg",
-    "aspectRatio": "landscape"
+    "aspectRatio": "portrait"
   },
   {
     "id": "img051",
-    "title": "Leaves Makkoh",
+    "title": "Leaves B&W",
     "description": "Detailed view of leaves with unique patterns",
     "collection": "landscape",
     "location": "Israel",
     "date": "2022-05-05",
     "featured": false,
     "url": "leaves-mackoh.jpg",
-    "aspectRatio": "square"
+    "aspectRatio": "landscape"
   },
   {
     "id": "img052",
-    "title": "Portrait 1",
+    "title": "fig leaves",
     "description": "Artistic portrait study with natural lighting",
-    "collection": "portrait",
+    "collection": "nature",
     "location": "Studio",
     "date": "2022-04-15",
     "featured": true,
@@ -590,12 +507,12 @@
   },
   {
     "id": "img054",
-    "title": "Me and Shmaya",
+    "title": "Road in desert",
     "description": "Personal portrait from an elevated perspective",
     "collection": "portrait",
     "location": "Israel",
     "date": "2022-04-01",
-    "featured": false,
+    "featured": true,
     "url": "top-me-and-shmaya.jpg",
     "aspectRatio": "square"
   }

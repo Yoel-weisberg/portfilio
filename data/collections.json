@@ -47,6 +47,19 @@
     "description": "The beauty of scenes captured after dark",
     "featured": false,
     "coverImage": "overview-at-night.jpg"
+  },
+  {
+    "id": "food",
+    "name": "Food",
+    "description": "The beauty of scenes captured after dark",
+    "featured": false,
+    "coverImage": "overview-at-night.jpg"
+  },
+  {
+    "id": "holydays",
+    "name": "Holydays",
+    "description": "Jewish holidays and traditions",
+    "featured": false,
+    "coverImage": "overview-at-night.jpg"
   }
 ]
-

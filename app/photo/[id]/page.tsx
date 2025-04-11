@@ -11,20 +11,22 @@ import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/
 import { getImage, getImagesByCollection, getCollection } from "@/lib/data"
 import { getImageUrl, formatDate } from "@/lib/image-utils"
 import { ShareDialog } from "@/components/share-dialog"
+import { useParams } from "next/navigation"
 
 export default function PhotoDetailPage({ params }: { params: { id: string } }) {
   const [photo, setPhoto] = useState(null)
   const [relatedPhotos, setRelatedPhotos] = useState([])
   const [collection, setCollection] = useState(null)
   const [pageUrl, setPageUrl] = useState("")
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 }) // State for dimensions
+  const { id } = useParams()
 
   useEffect(() => {
     // Set the current URL
     setPageUrl(window.location.href)
 
     // Get the photo data
-    const photoData = getImage(params.id)
-
+    const photoData = getImage(id)
     if (photoData) {
       setPhoto(photoData)
 
@@ -38,8 +40,19 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
         .slice(0, 3) // Limit to 3 related photos
 
       setRelatedPhotos(collectionPhotos)
+
+      // Dynamically fetch dimensions using the Image object
+      const img = new window.Image()
+      img.src = getImageUrl(photoData.url) || "/placeholder.svg"
+      img.onload = () => {
+        setDimensions({ width: img.naturalWidth, height: img.naturalHeight }) // Update state
+        console.log("Image dimensions:", img.naturalWidth, img.naturalHeight)
+      }
+      img.onerror = () => {
+        console.error("Failed to load image dimensions for:", photoData.url)
+      }
     }
-  }, [params.id]) // Access params.id directly
+  }, [id])
 
   if (!photo || !collection) {
     return (
@@ -48,12 +61,6 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
       </div>
     )
   }
-
-  const aspectRatioClass = {
-    portrait: "aspect-[9/16]",
-    landscape: "aspect-[16/9]",
-    square: "aspect-square",
-  }[photo.aspectRatio]
 
   return (
     <div className="bg-black text-white pt-24 pb-20">
@@ -76,7 +83,7 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className={`relative ${aspectRatioClass} rounded-lg overflow-hidden`}
+            className={`relative rounded-lg overflow-hidden`}
           >
             <Dialog>
               <DialogTrigger asChild>
@@ -84,7 +91,8 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
                   <Image
                     src={getImageUrl(photo.url) || "/placeholder.svg"}
                     alt={photo.title}
-                    fill
+                    height={dimensions.height || 500} // Use dimensions from state
+                    width={dimensions.width || 500} // Use dimensions from state
                     className="object-cover"
                     priority
                   />

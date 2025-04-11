@@ -132,7 +132,6 @@ export default function Home() {
     coverImage: "",
   }
   const currentImage = getFirstImageFromCollection(currentCollection.id)
-  const ratio = currentImage?.aspectRatio === "landscape" ? "aspect-[16/9]" : currentImage?.aspectRatio === "portrait" ? "aspect-[9/16]" : currentImage?.aspectRatio === "square" ? "aspect-square" : "aspect-square"
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
@@ -457,4 +456,3 @@ export default function Home() {
     </div>
   )
 }
-
