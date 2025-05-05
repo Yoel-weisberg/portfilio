@@ -362,7 +362,7 @@ export default function Home() {
             className="relative aspect-square rounded-lg overflow-hidden"
           >
             <NextImage
-              src={getImageUrl("about-portrait.jpg")}
+              src={"/AboutMe-1.jpg"}
               alt="Photographer portrait"
               fill
               className="object-cover"

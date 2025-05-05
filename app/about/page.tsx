@@ -57,7 +57,7 @@ export default function AboutPage() {
             className="relative aspect-square rounded-lg overflow-hidden"
           >
             <Image
-              src={getImageUrl("about-portrait.jpg") || "/placeholder.svg"}
+              src="/AboutMe-1.jpg"
               alt="Photographer portrait"
               fill
               className="object-cover"
@@ -141,7 +141,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Primary Camera</h3>
-                  <p className="text-gray-400">Canon EOS R5 Mirrorless</p>
+                  <p className="text-gray-400">DJI Mini 3  </p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -151,17 +151,6 @@ export default function AboutPage() {
                 <div>
                   <h3 className="font-semibold">Secondary Camera</h3>
                   <p className="text-gray-400">Sony Alpha a7 III</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="bg-primary/20 p-2 rounded-full mr-4 mt-1">
-                  <Camera className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold">Favorite Lenses</h3>
-                  <p className="text-gray-400">
-                    Canon RF 24-70mm f/2.8L, Canon RF 70-200mm f/2.8L, Canon RF 50mm f/1.2L
-                  </p>
                 </div>
               </li>
             </ul>
@@ -176,15 +165,6 @@ export default function AboutPage() {
               <Image
                 src={getImageUrl("equipment.jpg") || "/placeholder.svg"}
                 alt="Photography equipment"
-                width={600}
-                height={800}
-                className="object-cover h-full w-full"
-              />
-            </div>
-            <div className="aspect-[3/4] rounded-lg overflow-hidden mt-8">
-              <Image
-                src={getImageUrl("in-action.jpg") || "/placeholder.svg"}
-                alt="Photographer in action"
                 width={600}
                 height={800}
                 className="object-cover h-full w-full"
