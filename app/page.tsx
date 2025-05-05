@@ -288,7 +288,7 @@ export default function Home() {
               className="flex overflow-x-auto pb-8 gap-3 md:gap-6 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0"
               style={{ scrollbarWidth: "none" }}
             >
-              {featuredImages.slice(0, 8).map((image, index) => (
+              {featuredImages.map((image, index) => (
                 <motion.div
                   key={image.id}
                   className="group relative overflow-hidden rounded-lg aspect-[5/5] min-w-[220px] sm:min-w-[260px] md:min-w-[300px] lg:min-w-[350px] snap-start"
@@ -315,11 +315,7 @@ export default function Home() {
                   <Link href={`/photo/${image.id}`} className="absolute inset-0">
                     <span className="sr-only">View {image.title}</span>
                   </Link>
-                  {image.featured && (
-                    <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-primary-foreground text-xs font-medium py-1 px-2 rounded-full">
-                      Featured
-                    </div>
-                  )}
+
                 </motion.div>
               ))}
             </div>

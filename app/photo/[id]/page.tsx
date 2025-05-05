@@ -93,7 +93,6 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">{photo.title}</h1>
-            <p className="text-gray-300 mb-4">{photo.description}</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
@@ -161,6 +160,15 @@ export default function PhotoDetailPage({ params }: { params: { id: string } }) 
                 <span>{collection.name}</span>
               </div>
 
+              {/* Photo Description Section */}
+              <div className="border-t border-zinc-800 pt-8 pb-8">
+                <h2 className="text-xl font-semibold mb-6">Description</h2>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {photo.description || "No description available for this photo."}
+                </p>
+              </div>
+
+              {/* Photo Details Section */}
               <div className="border-t border-zinc-800 pt-8">
                 <h2 className="text-xl font-semibold mb-6">Details</h2>
                 <dl className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">

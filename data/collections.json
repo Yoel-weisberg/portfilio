@@ -4,21 +4,14 @@
     "name": "Landscape",
     "description": "Capturing the beauty of natural scenery and environments",
     "featured": true,
-    "coverImage": "arieal-over-blue-lake.jpg"
+    "coverImage": "rocks-and-water.jpg"
   },
   {
     "id": "urban",
     "name": "Urban",
     "description": "City scenes, streets, and urban environments",
     "featured": true,
-    "coverImage": "night-lights.jpg"
-  },
-  {
-    "id": "architecture",
-    "name": "Architecture",
-    "description": "Exploring the design and structure of buildings and bridges",
-    "featured": true,
-    "coverImage": "brisge-of-lines.jpg"
+    "coverImage": "ny-3.jpg"
   },
   {
     "id": "travel",
@@ -35,13 +28,6 @@
     "coverImage": "waves.jpg"
   },
   {
-    "id": "culture",
-    "name": "Culture",
-    "description": "Cultural elements, traditions, and local life",
-    "featured": false,
-    "coverImage": "sook-wide.jpg"
-  },
-  {
     "id": "night",
     "name": "Night",
     "description": "The beauty of scenes captured after dark",
@@ -53,13 +39,6 @@
     "name": "Food",
     "description": "The beauty of scenes captured after dark",
     "featured": false,
-    "coverImage": "overview-at-night.jpg"
-  },
-  {
-    "id": "holydays",
-    "name": "Holydays",
-    "description": "Jewish holidays and traditions",
-    "featured": false,
-    "coverImage": "overview-at-night.jpg"
+    "coverImage": "food.jpg"
   }
 ]
